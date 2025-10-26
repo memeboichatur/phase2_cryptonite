@@ -80,3 +80,20 @@ we need to compile these files first, before loading them into gdb
 ## Resources: 
 
 
+# 3. vault-door-3
+This vault uses for-loops and byte arrays. The source code for this vault is here: VaultDoor3.java
+
+## Solution:
+opened the code to figure out what to do. the program basically took an input, checked if it is 32 characters, and then performed a series of operations on it, based on array position. the first 8 letters were the same, the next 8 needed to be reversed and so on... solved this in my notebook and assembled the flag. could have also made a python script to make the reversal process easier.
+
+
+## Flag: picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_c79a21}
+
+## Concepts Learnt: 
+playing and getting comfortable with array indices.
+
+## Notes:
+n/a
+
+## Resources: 
+n/a
