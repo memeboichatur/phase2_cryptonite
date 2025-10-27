@@ -1,5 +1,6 @@
 # Forensics
 
+
 # 1. Trivial Flag Transfer Protocol
 Figure out how they moved the flag.
 
@@ -31,12 +32,36 @@ wireshark download
 We found this file. Recover the flag.
 
 ## Solution:
+as the file format was unknown, i used ``` file tunn3l_v1s10n ``` to figure out what kind of a file it was. this gave me info that the file is a data file. as this was not enough, i decided to look at the hex of the picture, as this would bring some more clarity. the magic numbers ```42 4D``` revealed it was a .bmp image. renaming it directly to bmp didnt work, which i hoped it would. instead it gave me a header error. after a lot of googling on how headers work, and trying to compare my files values to other normal bmp hex codes, i realised the corrupted part was BA D0. Asking gpt told me i should rename this to 0x28, which meant 40(this was probably a standard of bmp files). The file finally opened !!. However it said not a flag :( . as i now had a working bmp file, i decided to check its metadata, finding nothing. i tried steganography, with many combinations of the not flag as password to no avail. i finally had to ask my friend who told me i also had to edit the height correctly, to reveal the flag. as i still wasnt sure on how bmp headers work, i tried this out and this gave me the flag.
 
 ## Flag: 
+picoCTF{qu1t3_a_v13w_2020}
 
 ## Concepts Learnt: 
+bmp headers and basics of how they work.
+
 
 ## Notes:
 
 ## Resources: 
- 
+https://hexed.it/
+steganography tools.
+
+# 3.m00nwalk
+Decode this message from the moon
+
+
+## Solution:
+downloading the file i had no clue what kind of a message this could be. looking at the first hint: ``` How did pictures from the moon landing get sent back to Earth? ``` . googled this to find out they used radio to tx and rx images. this gave a good idea on where to start- sstv. opened up a sstv decoder online and it instantly gave me the flag containing the image.
+
+## Flag: 
+picoCTF{beep_boop_im_in_space}
+
+## Concepts Learnt: 
+basics of sstv 
+
+## Notes:
+
+## Resources: 
+ https://sstv-decoder.mathieurenaud.fr/
+ google
