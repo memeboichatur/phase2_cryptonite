@@ -68,12 +68,16 @@ https://gemini.google.com/ - used gemini to learn about rev engg and understand 
 For what argument does this program print `win` with variables 83, 0 and 3? File: chall_1.S Flag format: picoCTF{XXXXXXXX} -> (hex, lowercase, no 0x, and 32 bits. ex. 5614267 would be picoCTF{0055aabb})
 
 ## Solution:
+watched a few videos and looked around to figure out how to read arm assembly code. i wasnt familar with this type of code before. started reading the main function and figured out the line cmp w0, 0 meant the return value from func (which is in w0) is compared to 0. if this was equal to zero, it would print "you win"
+now i started anaylzing func
+ saw the number 83, 0,3 being stored and left shift and division being performed on them. I called these values using python and found the final number to be 27. To put it on the format needed, I ran ```printf "%0X" 27```  to get the hex number as 0000001b. put this in the flag format and solved the challenge
 
 ## Flag: 
+picoCTF{0000001b}
 
 ## Concepts Learnt: 
 difference between .s and .S files
-we need to compile these files first, before loading them into gdb
+
 
 ## Notes:
 
