@@ -40,12 +40,22 @@ FCSC{b1dee4eeadf6c4e60aeb142b0b486344e64b12b40d1046de95c89ba5e23a9925}
 my friend recommended me this anime but i think i've heard a wrong name.
 
 ## Solution:
+ran the strings command, file command etc to understand what the .elf file was. then tried using ghidara to decompile the file. opened up the main function.
+i was seeing the ```z1()``` a lot of time, so i tried to figure out what it did. it was overwriting certain data
+more looking around, i found that the code was reading bytes from 0x68 and then XORing it with 0xA5, in a loop. the loop exited if the current data was 0xa5 or the key.
+i went to 0x0068 and found hex there 
 
+next, i xored each byte with 0XA5 to get 
+```54 46 43 43 54 46 7b 54 68 31 73 5f 31 73 5f 73 6f 6d 33 5f 73 31 6d 70 6c 33 5f 34 72 64 75 31 6e 6f 5f 66 31 72 6d 77 34 72 65 7d ``` . converted this to ASCII to get the flag. it was indeed not simple arduino firmware :(
 
 ## Flag: 
+TFCCTF{Th1s_1s_som3_s1mpl3_4rdu1no_f1rmw4re}
 
 ## Concepts Learnt: 
+how 2 use ghidara
+how 2 read ghidara
 
 ## Notes:
 
 ## Resources: 
+ghidara

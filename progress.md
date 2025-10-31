@@ -1,7 +1,7 @@
 # Progress
-cryptography - rsa oracle
-forensics - 
-binary exp - 
-reverse engg - 
-webex -
-hardware - baremetal alchemist
+cryptography - DONE
+forensics - DONE
+binary exp - DONE
+reverse engg - DONE
+webex - DONE
+hardware - DONE
