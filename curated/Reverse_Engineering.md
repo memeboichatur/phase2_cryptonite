@@ -265,12 +265,38 @@ bluestacks
 ## Solution:
 we were given 3 files: dust_noob, dust_intermediate, dust_pro
 
-starting with dust_noob, i ran ``` file dust_noob``` to find its a 64 bit elf, not stripped. i loaded it into ghidra. after an hour of trying to make sense of the decompiled code, i was reaching nowhere. some quick searching around later i realised the program was written using rust- a language notorious for not being able to be decompiled that easily. i was forced to now read assembly to solve the challenge.
+starting with dust_noob, i ran ``` file dust_noob``` to find its a 64 bit elf, not stripped. i loaded it into ghidra and analzyed the main function. the main function called the function shinyclean:: main
 
-using gdb
+heading over to this function, the function initializes a hardcoded array ```local_c7```, iterates through it using a xor key of ```0x3f```  and stored the output in a new buffer ```local_de```
+after the decryption, the program makes a check of comparing a hardcoded number ```0x1c1e8b2``` with the PID of the system. this was preventing the flag from running
+
+to assemble the flag, i performed the decryption manually using a python script.
+
+```
+encrypted_data = [
+    0x7b, 0x5e, 0x48, 0x58, 0x7c, 0x6b, 0x79, 0x44, 0x79, 0x6d, 0x0c, 
+    0x0c, 0x60, 0x7c, 0x0b, 0x6d, 0x60, 0x68, 0x0b, 0x0a, 0x77, 0x1e, 0x42
+]
+key = 0x3f
+decrypted_bytes = bytes([byte ^ key for byte in encrypted_data])
+print(decrypted_bytes.decode('ascii'))
+
+```
+
+this printed the flag for dust_noob
+
+
+dust_intermediate:
+
+started again with ```file dust_intermediate``` to get ```dust_intermediate: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=d81efd812f3301e5b5215b3a676fccbe02f49a7b, for GNU/Linux 3.2.0, not stripped```
+tried running the program
+the program asked for a passphrase.
+
+
+
 
 ## Flag: 
-
+DawgCTF{FR33_C4R_W45H!}
 ## Concepts Learnt: 
 
 ## Notes:
